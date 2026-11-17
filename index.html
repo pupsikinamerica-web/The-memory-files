@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE MEMORY FILES · B1 English</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg:#f7f9f7;
+  --panel:#ffffff;
+  --panel2:#f2f7f6;
+  --ink:#1c303a;
+  --muted:#61717d;
+  --line:#dfe7e5;
+  --mint:#186e66;
+  --orange:#bb5b36;
+  --blue:#496aba;
+  --red:#b94d55;
+  --shadow:0 12px 35px rgba(39,66,68,.055), 0 2px 7px rgba(39,66,68,.025);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 'Avenir Next',Inter,system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:#176e76;text-underline-offset:3px}a:hover{color:#b65639}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #81acff;outline-offset:3px}
+.shell{max-width:1230px;margin:auto;padding:0 27px}
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid var(--line);box-shadow:0 3px 15px rgba(27,47,45,.025)}
+.top-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:74px}
+.logo{display:flex;align-items:center;gap:12px;letter-spacing:.11em;font-size:12px;font-weight:850;color:#1d333b}
+.logo-mark{width:37px;height:37px;border:1px solid #a8d6cb;background:#e8f6f0;border-radius:11px;display:grid;place-items:center;color:var(--mint);font-size:25px}
+.switch{display:flex;gap:5px;border:1px solid #dce9e7;background:#f3f7f6;padding:5px;border-radius:13px}
+.switch button{border:0;background:transparent;color:#546d72;padding:9px 16px;border-radius:9px;font-weight:750;font-size:13px;transition:background .2s,color .2s,box-shadow .2s}
+.switch button.active{background:#216b65;color:white;box-shadow:0 2px 7px #216b6528}
+.switch button:not(.active):hover{background:#e4eeeb}
+.section{display:none}.section.active{display:block}
+.hero{position:relative;isolation:isolate;min-height:490px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:14px;overflow:hidden;padding:48px clamp(29px,4.5vw,66px);margin:28px 0 36px;border:1px solid #e1e8e6;border-radius:30px;background:linear-gradient(125deg,#f1f8f4 3%,#eff5f5 48%,#f4f0ec 100%)}
+.hero:before{content:'';position:absolute;z-index:-1;right:-85px;top:-115px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,#fff8ebd1 10%,#f8e5d856 43%,transparent 69%)}
+.hero:after{content:'FIELD NOTES  /  EXPLORE THE UNKNOWN';position:absolute;right:28px;bottom:18px;font-size:9px;font-weight:850;letter-spacing:.18em;color:#81958d}
+.eyebrow{display:flex;gap:11px;align-items:center;color:var(--mint);font-size:11px;letter-spacing:.15em;font-weight:850;text-transform:uppercase}
+.eyebrow:before{content:'';display:inline-block;width:27px;height:2px;background:#ed9b72}
+h1{font-size:clamp(57px,7.35vw,99px);line-height:.99;letter-spacing:-.078em;margin:22px 0 23px;font-weight:850;color:#16353b}
+h1 em{font-style:normal;color:#e27c57}
+.intro{font-size:clamp(17px,1.8vw,20px);max-width:520px;color:#526a72;line-height:1.53}
+.pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:26px}
+.pill{font-size:12px;border:1px solid #d4e2db;background:#ffffffae;padding:7px 12px;border-radius:30px;color:#48656a;letter-spacing:.02em;font-weight:650}
+.brain{position:relative;height:390px;display:grid;place-items:center;min-width:0}
+.brain svg{position:relative;z-index:1;width:min(100%,460px);height:390px;filter:drop-shadow(0 18px 30px rgba(38,98,98,.07))}
+.brain:before{content:'';position:absolute;width:315px;height:315px;border-radius:50%;background:radial-gradient(circle,#cbeee5d2,transparent 70%);box-shadow:0 0 0 1px #6fb7a61e,0 0 0 55px #5da3900b,0 0 0 105px #5da39007}
+.number{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#997251;font-weight:850}
+.module{position:relative;margin:22px 0 32px;border:1px solid var(--line);border-radius:22px;background:var(--panel);overflow:hidden;box-shadow:var(--shadow)}
+.module:before{content:'';display:block;height:4px;background:linear-gradient(90deg,#b5d9cc 0%,#e7f3ed 48%,#fff 100%)}
+.mod-head{padding:30px 34px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.mod-head h2{font-size:clamp(27px,3.5vw,37px);letter-spacing:-.045em;line-height:1.16;margin:8px 0 8px;color:#1f343b}
+.duration{white-space:nowrap;border:1px solid #ccded7;color:#23695d;background:#eff8f4;border-radius:100px;padding:7px 12px;font-size:12px;font-weight:800}
+.desc{color:var(--muted);margin-top:6px}
+.mod-body{padding:18px 34px 34px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tiled{background:#f7faf9;border:1px solid #e2eae6;border-radius:15px;padding:21px}
+.tiled h3,.tiled p{margin:0 0 9px}.tiled p:last-child{margin-bottom:0}
+.speak{border-left:3px solid #75b8a5;padding-left:16px;margin:16px 0;color:#3e5862}
+.speak strong{color:#177166}
+.hint{font-size:14px;color:#6c7d87}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#5575ad;font-weight:850}
+.prompt{font-size:19px;font-weight:700;margin:0 0 12px}
+.tags{display:flex;gap:7px;flex-wrap:wrap}
+.tag{border:1px solid #d3e2e0;color:#316a67;background:#eef7f5;padding:6px 11px;border-radius:9px;font-size:13px}
+.btn{background:#226e65;color:white;border:1px solid #226e65;border-radius:11px;padding:11px 17px;font-weight:800;font-size:14px;box-shadow:0 3px 10px rgba(34,110,101,.12);transition:background .18s,transform .18s,box-shadow .18s}
+.btn:hover{background:#145d56;transform:translateY(-1px);box-shadow:0 6px 14px rgba(34,110,101,.16)}
+.btn.secondary{background:#fff;color:#285e65;border:1px solid #afc9c9;box-shadow:none}
+.btn.secondary:hover{background:#f0f7f6}
+.btn.danger{background:#db7856;color:white;border-color:#db7856}
+.btn.danger:hover{background:#c65d3c}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.read{max-width:850px;font-size:17px;color:#324652;line-height:1.83}
+.read p{margin:0 0 16px}.read b{color:#147064}
+.read-card{background:#fcfdfb;border:1px solid #e2e8e2;border-radius:16px;padding:28px 30px}
+.test-grid{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.memory-token{background:#e6f6ec;color:#205448;border:1px solid #c5e8d4;padding:11px 16px;font-weight:780;border-radius:10px;letter-spacing:.04em;min-width:92px;text-align:center}
+.memory-box{min-height:95px;border:1.5px dashed #a8c9c3;border-radius:15px;padding:21px;background:#f4faf8}
+.countdown{font-size:44px;font-variant-numeric:tabular-nums;line-height:1.3;color:var(--mint);font-weight:850}
+.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:11px;margin:16px 0}
+.option{background:#fff;border:1px solid #dce7e8;color:#2a414b;padding:12px;border-radius:11px;text-align:left;transition:.15s}
+.option:hover{border-color:#75aba5;background:#f5faf9}
+.option.selected{border-color:#237d70;box-shadow:inset 0 0 0 1px #237d70;background:#e8f6f0}
+.option.correct{background:#e5f6e9;border-color:#62ab7b}
+.option.wrong{background:#fff0ef;border-color:#dd8c87}
+.feedback{border-radius:12px;background:#edf5f8;border:1px solid #cadee6;padding:14px 17px;margin-top:14px;color:#344d5a;display:none}
+.feedback.show{display:block}.feedback.good{border-color:#9ed4b3;background:#eff9f0}.feedback.warn{border-color:#eccb9d;background:#fff7ea}
+.quiz{border-top:1px solid var(--line);padding:18px 0}.quiz:first-child{border-top:0}
+.quiz label{display:block;background:#fbfcfb;border:1px solid #e0e8e7;border-radius:11px;padding:11px 13px;margin:9px 0;cursor:pointer;transition:.2s}
+.quiz label:hover{background:#f4f9f7}
+.quiz label:has(input:checked){border-color:#7db3a1;background:#eaf7f1}
+.quiz input{accent-color:#27806e;margin-right:9px}
+.quiz .q-title{font-size:17px;font-weight:750}
+.exercise-line{display:flex;gap:15px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:12px 0}
+.exercise-line span{flex:1}
+.exercise-line select{min-width:165px;max-width:50%;background:#fff;color:#29414b;padding:10px;border:1px solid #cbdcd9;border-radius:9px}
+.labelrow{font-size:12px;font-weight:850;letter-spacing:.11em;text-transform:uppercase;color:#b15f41;margin:23px 0 10px}
+.topic-card{border:1px solid #dce9e5;border-radius:15px;padding:19px;background:#f5f9f7}
+.topic-card strong{display:block;margin-bottom:5px;color:#167269}
+.quote{border-left:3px solid #d99464;font-size:19px;padding:10px 0 10px 22px;color:#765640;font-style:italic}
+.case-header{background:linear-gradient(120deg,#edf5f4,#f8f8f1);border:1px solid #d5e5e0;padding:19px 22px;border-radius:14px;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.timestamp{background:#def1e5;color:#205845;border-radius:7px;padding:4px 9px;font-size:11px;font-weight:900;white-space:nowrap}
+.evidence{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:17px}
+.e-card{background:#fff;border:1px solid #dde7e7;padding:21px;border-radius:14px;box-shadow:0 1px 4px #233c3a07}
+.e-card em{font-style:normal;color:#bd6949;font-weight:800;font-size:11px;letter-spacing:.08em}
+.e-card p{margin:6px 0 0;font-size:17px}
+.feed{display:grid;gap:16px}
+.post{background:#f6f7f2;border:1px solid #e4e9e6;border-radius:17px;padding:21px 24px;color:#243a43}
+.post .username{font-size:13px;font-weight:850;letter-spacing:.04em;color:#557080}
+.post h3{font-size:22px;line-height:1.25;margin:10px 0}
+.post .meta{font-size:12px;color:#677b89;border-top:1px solid #c9d5d8;padding-top:10px;margin-top:17px}
+.post.false{background:#fff2ea;border-color:#f6ddcb}.post.blue{background:#edf5fc;border-color:#dce8f4}
+.list-lines p{border-bottom:1px solid #e4eae8;padding-bottom:10px}
+.footer{margin-top:56px;padding:31px 0 46px;border-top:1px solid var(--line);font-size:13px;color:#75868b;display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap}
+.final-heading{font-size:clamp(36px,5vw,65px);letter-spacing:-.06em;line-height:1.07;color:#203f43}
+.divider{height:1px;background:#dce8e5;margin:24px 0}
+.source-links a{display:inline-block;margin:6px 12px 6px 0;font-size:13px}
+.progress{height:3px;background:#f0f4f2}.progress div{width:0;background:#db805c;height:100%;transition:width .3s}
+.note{background:#eaf6ee;border:1px solid #c9e4d1;padding:15px;border-radius:12px;color:#275749}
+.tiny{font-size:12px;color:#6d8089}
+.input{background:#fff;color:#263b45;border:1px solid #c8d9d8;border-radius:10px;padding:11px 12px;width:100%}
+.input::placeholder{color:#89999c}
+.inline-note{display:inline-block;background:#fff1e7;color:#965031;border-radius:8px;padding:4px 9px;font-weight:750}
+.source-blurb{font-size:13px;color:#7e909b}
+.sep{height:1px;background:var(--line);margin:20px 0}
+.controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:17px}
+.checkinput{width:20px;height:20px;accent-color:var(--mint)}
+.cite-link{font-size:13px;color:var(--blue)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+#extras>.module{background:linear-gradient(145deg,#fffaf6,#f7faf9)!important}
+@media(max-width:800px){
+ .shell{padding:0 16px}.hero{grid-template-columns:1fr;min-height:auto;padding:35px 26px 24px;gap:8px;margin:17px 0 25px;border-radius:22px}.hero:after{display:none}
+ .brain{height:242px;order:initial}.brain svg{height:240px}.brain:before{width:200px;height:200px}
+ h1{font-size:clamp(48px,10.4vw,72px)}.two,.three,.evidence{grid-template-columns:1fr}
+ .mod-head{padding:23px 22px 0}.mod-body{padding:14px 22px 27px}.top-inner{min-height:66px}.logo{letter-spacing:.035em;font-size:11px}
+ .switch button{padding:7px 9px;font-size:12px}.mod-head h2{font-size:29px}
+ .exercise-line{display:block}.exercise-line select{width:100%;max-width:none;margin-top:6px}.post h3{font-size:19px}
+}
+@media(max-width:470px){.top-inner{gap:7px}.logo-mark{width:29px;height:29px;font-size:20px}.switch{gap:2px;padding:3px}.switch button{font-size:10px;padding:7px 5px}.hero{padding:32px 21px 21px}.mod-head{gap:10px}.duration{padding:5px 8px;font-size:11px}.case-header{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@media print{.top,.btn,.footer{display:none!important}.section{display:block!important}.hero{min-height:initial;break-inside:avoid}.module{break-inside:avoid;box-shadow:none;background:#fff}.mod-body,.mod-head{color:#111}body{background:#fff;color:#111}}
+
+/* Interactive glossary — works with pointer, touch, and keyboard. */
+.glossary-term{appearance:none;display:inline;margin:0;padding:0 1px;border:0;border-bottom:1.5px dashed #5eaa9a;border-radius:2px;background:transparent;color:#087566;font:inherit;font-weight:800;line-height:inherit;text-align:inherit;vertical-align:baseline;cursor:help;text-decoration:none;transition:background .15s,border-color .15s,color .15s}
+.glossary-term:hover,.glossary-term:focus-visible,.glossary-term.glossary-active{background:#e5f4ed;border-bottom-color:#087566;color:#07594f}
+.glossary-term:focus-visible{outline:2px solid #479487;outline-offset:2px}
+.translation-hint{display:flex;align-items:flex-start;gap:8px;margin:9px 0 17px;color:#6b827f;font-size:12px;line-height:1.4}
+.translation-hint > span:first-child{color:#2b9481;font-weight:900}
+.translation-tip{position:fixed;z-index:1000;max-width:min(320px,calc(100vw - 24px));min-width:100px;padding:10px 14px;color:#ffffff;background:#174e48;border:1px solid #377b70;border-radius:11px;box-shadow:0 10px 26px rgba(11,55,50,.20);font-size:14px;font-weight:600;line-height:1.45;text-align:center;pointer-events:none;overflow-wrap:break-word}
+.translation-tip[hidden]{display:none!important}
+
+/* Light, quiet interaction audio; icon is accessible and independent of content. */
+.top-actions{display:flex;align-items:center;justify-content:flex-end;gap:11px}
+.sound-toggle{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:1px solid #cbded6;border-radius:12px;background:#fff;color:#236b62;font-size:12px;font-weight:800;padding:11px 12px;line-height:1.15;box-shadow:0 1px 3px rgba(18,66,54,.035);transition:background .18s,border-color .18s,color .18s,transform .18s}
+.sound-toggle:hover{background:#eef8f3;border-color:#94c8b6;transform:translateY(-1px)}
+.sound-toggle .sound-icon{flex:none}
+.sound-toggle .sound-cross{display:none}
+.sound-toggle[aria-pressed="false"]{color:#70817e;border-color:#dce4e0;background:#f5f7f6}
+.sound-toggle[aria-pressed="false"] .sound-waves{display:none}
+.sound-toggle[aria-pressed="false"] .sound-cross{display:block}
+@media(max-width:720px){
+  .top-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;padding-top:10px;padding-bottom:10px}
+  .top-inner>.logo{width:100%;justify-content:center}
+  .top-actions{width:100%;justify-content:center;gap:10px}
+  .sound-toggle{padding:10px 12px}
+}
+@media(max-width:380px){
+  .top-actions{gap:6px}.sound-toggle{gap:5px;padding:10px 8px;font-size:11px}
+  .switch button{font-size:10px;padding:7px 7px}
+}
+@media print{.sound-toggle{display:none!important}}
+
+</style>
+</head>
+<body>
+<header class="top"><div class="shell top-inner"><div class="logo"><span class="logo-mark">⌁</span><span>THE MEMORY FILES <span style="color:var(--mint)">/ B1</span></span></div><div class="top-actions"><div class="switch" role="tablist" aria-label="Choose lesson"><button id="t1" class="active" onclick="goLesson(1)">01 · Memory</button><button id="t2" onclick="goLesson(2)">02 · Truth</button></div><button type="button" id="soundToggle" class="sound-toggle" aria-pressed="true" aria-label="Mute sound effects" title="Sound effects • Click to mute"><svg class="sound-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path class="sound-waves" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="sound-cross" d="m16 9 5 6m0-6-5 6"/></svg><span class="sound-label">Sound on</span></button></div></div><div class="progress"><div id="progress"></div></div></header>
+<main class="shell">
+<section id="lesson1" class="section active">
+<div class="hero"><div><div class="eyebrow">English · Psychology · Mystery</div><h1>CAN YOU<br><em>TRUST</em> YOUR<br>BRAIN?</h1><p class="intro">What if some of your strongest memories never happened? Welcome to a two-part investigation into memory, evidence and the truth.</p><div class="pills"><span class="pill">B1 English</span><span class="pill">Lesson 01 / 60 min</span><span class="pill">Speaking + Science</span></div></div><div class="brain" aria-hidden="true"><svg viewBox="0 0 440 430"><defs><radialGradient id="glow"><stop stop-color="#9ddfcb" stop-opacity=".24"/><stop offset="1" stop-color="#9ddfcb" stop-opacity="0"/></radialGradient><linearGradient id="c"><stop stop-color="#347b78"/><stop offset="1" stop-color="#7499a3"/></linearGradient></defs><circle cx="222" cy="212" r="188" fill="url(#glow)"/><g fill="none" stroke="url(#c)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M213 95c-32-46-92-27-104 5-35-4-59 25-56 57-40 34-21 79 1 92-6 42 25 74 60 77 17 34 67 41 99 11V95Z"/><path d="M229 95c34-41 87-27 105 6 31-5 60 28 56 60 29 26 30 71-1 92 6 35-26 70-60 73-20 34-74 37-100 9V95Z"/><path d="M158 94c-16 21-3 38 14 41-37-2-52 24-41 52-25 10-31 30-21 51m25 50c31 18 54-3 61-26m-91-115c-18 15-16 38-8 52m35 22c27-4 42 10 36 29m-18-144c7 25 28 33 51 20m-54 209c26-18 37-11 51 1m78-223c17 12 17 29 8 39 37-7 56 23 45 43 28 12 28 39 13 53m-29 47c-24-9-39 1-46 20m74-118c22-9 31 0 36 20m-76-81c-13 20-36 24-45 13m33 143c-13-22-33-21-47-7"/><path d="M220 91v248" stroke="#2e7b70" stroke-dasharray="5 11"/></g><g fill="#e4aa7d"><circle cx="110" cy="198" r="5"/><circle cx="173" cy="135" r="5"/><circle cx="169" cy="250" r="5"/><circle cx="323" cy="170" r="5"/><circle cx="298" cy="291" r="5"/></g><path d="M110 198l59 52 4-115 150 35-25 121" fill="none" stroke="#4d9a91" stroke-opacity=".24" stroke-width="1.2"/></svg></div></div>
+
+<div class="module" id="warmup"><div class="mod-head"><div><div class="number">MISSION 01 / Start talking</div><h2>How good is your memory?</h2><p class="desc">Speak first. Don't try to give perfect answers.</p></div><span class="duration">7 min</span></div><div class="mod-body"><div class="two"><div class="tiled"><div class="kicker">Quick questions</div><p>1. What did you have for breakfast three days ago?</p><p>2. Can you describe your first day at school?</p><p>3. Have you ever disagreed with a friend about what happened?</p><p>4. Is a confident person always a reliable witness?</p></div><div class="tiled"><div class="kicker">Confidence meter</div><p class="prompt">"My memory is usually accurate."</p><p>How much do you agree?</p><input type="range" min="0" max="100" value="70" id="confidence" oninput="document.getElementById('confidenceText').textContent=this.value+'% confident'" style="width:100%;accent-color:#a6f7c8"><div id="confidenceText" style="color:var(--mint);font-weight:850;font-size:23px">70% confident</div><div class="speak"><strong>Say more:</strong> “I think this because…” / “One time, I…”</div></div></div></div></div>
+
+<div class="module" id="experiment"><div class="mod-head"><div><div class="number">MISSION 02 / Live experiment</div><h2>The word that wasn't there</h2><p class="desc">One short memory challenge. No tricks from the teacher.</p></div><span class="duration">9 min</span></div><div class="mod-body"><p><b>Step 1.</b> Study 12 words for 25 seconds. Then the words will disappear. Try to remember them, but don't take notes.</p><div class="memory-box" id="memoryBox"><p style="margin:0 0 14px;color:#607782">Ready? Click Start when you are prepared.</p><button class="btn" onclick="startMemory()">Start memory test</button></div><div id="memoryRecall" style="display:none"><p class="labelrow">Step 2 / Recall</p><p>Write down as many words as you can remember.</p><textarea class="input" id="recallText" rows="3" placeholder="I remember: ..."></textarea><p class="labelrow">Step 3 / Recognition</p><p>Click every word you believe you saw. It is okay if you're unsure.</p><div class="options" id="memoryChoices"></div><div class="controls"><button class="btn" onclick="finishMemory()">Reveal the results</button><button class="btn secondary" onclick="resetMemory()">Try again</button></div><div id="memoryResult" class="feedback"></div></div><div class="sep"></div><div class="speak"><strong>Discuss:</strong> How sure were you? Is remembering an idea the same as remembering an exact word? What might influence your answers?</div><p class="source-blurb">Adapted as a short classroom demonstration of the DRM false-memory paradigm. An individual result is not a psychological diagnosis.</p></div></div>
+
+<div class="module" id="reading1"><div class="mod-head"><div><div class="number">MISSION 03 / Reading</div><h2>Your brain is not a camera</h2><p class="desc">Read the article, then explain it in your own words.</p></div><span class="duration">11 min</span></div><div class="mod-body"><div class="read-card"><div class="kicker">SCIENCE NOTES / 01</div><div class="translation-hint"><span aria-hidden="true">✦</span> <span>Green words are interactive — hover to see the Russian translation, or tap on mobile.</span></div><div class="read"><p>Imagine two friends talking about the same birthday party. One remembers loud music and a blue cake. The other is sure the cake was green and the music was quiet. Are they both lying? <button type="button" class="glossary-term" data-ru="Не обязательно. / Вовсе не обязательно." aria-label="Translate: Not necessarily." aria-expanded="false">Not necessarily.</button></p><p>We often think of memory as a video that we can watch again. However, scientists say that remembering is more like <button type="button" class="glossary-term" data-ru="воссоздание, восстановление (по частям)" aria-label="Translate: rebuilding" aria-expanded="false">rebuilding</button> a story. Our brains keep important information, but they may not keep every small detail. When we remember something, we use both the original experience and information we learned later.</p><p>Psychologist Elizabeth Loftus studied how questions can influence people's memories. In a famous experiment about car accidents, people watched a video and answered questions about what they had seen. Changing one word in a question affected the answers. This is one example of the <button type="button" class="glossary-term" data-ru="эффект дезинформации" aria-label="Translate: misinformation effect" aria-expanded="false">misinformation effect</button>.</p><p>Another type of experiment asks people to remember a list of connected words. Participants may remember a very related word that was never shown. This does not mean their brains are broken. It shows that memory often keeps the <button type="button" class="glossary-term" data-ru="общий смысл" aria-label="Translate: general meaning" aria-expanded="false">general meaning</button>, not only exact details.</p><p>So, can we trust our memories? Often, yes. Memories help us learn and make decisions every day. But when an exact detail matters, it is wise to look for more <button type="button" class="glossary-term" data-ru="доказательства; свидетельства" aria-label="Translate: evidence" aria-expanded="false">evidence</button>, especially if someone asks a leading question.</p></div><div class="tiny">Original B1-level learning text, based on research linked in the Sources section.</div></div><div class="labelrow">Check your understanding</div><div id="quiz-reading1"><div class="quiz"><div class="q-title">1. What is the writer's main point?</div><label><input type="radio" name="r1" value="a">All memories are false.</label><label><input type="radio" name="r1" value="b">Memory helps us, but exact details can change.</label><label><input type="radio" name="r1" value="c">Photographs are always better than people.</label></div><div class="quiz"><div class="q-title">2. What did Loftus's research show?</div><label><input type="radio" name="r2" value="a">A question's wording may influence an answer.</label><label><input type="radio" name="r2" value="b">People can remember everything if they study.</label><label><input type="radio" name="r2" value="c">Only children make memory mistakes.</label></div><div class="quiz"><div class="q-title">3. Why might people remember a word they didn't see?</div><label><input type="radio" name="r3" value="a">They want to cheat.</label><label><input type="radio" name="r3" value="b">They always forget the first word.</label><label><input type="radio" name="r3" value="c">Their brains connect words with a shared meaning.</label></div></div><button class="btn secondary" onclick="checkRadio(['r1','r2','r3'],['b','a','c'],'reading1Result')">Check answers</button><div class="feedback" id="reading1Result"></div><div class="speak"><strong>Challenge:</strong> Explain the article in 30 seconds using the words <i>memory, detail, question</i> and <i>evidence</i>.</div></div></div>
+
+<div class="module" id="vocabulary1"><div class="mod-head"><div><div class="number">MISSION 04 / Vocabulary lab</div><h2>Words for a better argument</h2><p class="desc">Eight useful words in context — not just translation.</p></div><span class="duration">8 min</span></div><div class="mod-body"><div class="two"><div class="tiled"><div class="kicker">Remember these</div><div class="list-lines"><p><button type="button" class="glossary-term" data-ru="вспоминать; восстанавливать в памяти" aria-label="Translate: recall" aria-expanded="false">recall</button> — remember something from the past</p><p><button type="button" class="glossary-term" data-ru="надёжный, заслуживающий доверия" aria-label="Translate: reliable" aria-expanded="false">reliable</button> — someone or something you can trust</p><p><button type="button" class="glossary-term" data-ru="доказательства; свидетельства" aria-label="Translate: evidence" aria-expanded="false">evidence</button> — facts that help show what is true</p><p><button type="button" class="glossary-term" data-ru="свидетель; очевидец" aria-label="Translate: witness" aria-expanded="false">witness</button> — a person who sees an event</p></div></div><div class="tiled"><div class="kicker">Use them naturally</div><div class="list-lines"><p><button type="button" class="glossary-term" data-ru="вводящий в заблуждение" aria-label="Translate: misleading" aria-expanded="false">misleading</button> — making you believe the wrong thing</p><p><button type="button" class="glossary-term" data-ru="предлагать; высказывать предположение" aria-label="Translate: suggest" aria-expanded="false">suggest</button> — give an idea or possible explanation</p><p><button type="button" class="glossary-term" data-ru="уверенный (в себе или в чём-либо)" aria-label="Translate: confident" aria-expanded="false">confident</button> — sure of yourself</p><p><button type="button" class="glossary-term" data-ru="путать, перепутать" aria-label="Translate: mix up" aria-expanded="false">mix up</button> — confuse one thing with another</p></div></div></div><div class="labelrow">Complete the sentences</div><div id="vocab1"></div><div class="controls"><button class="btn secondary" onclick="checkSelects('vocab1','vocab1Result')">Check vocabulary</button></div><div class="feedback" id="vocab1Result"></div><div class="speak"><strong>Personalise:</strong> Say three true sentences about yourself using three different words.</div></div></div>
+
+<div class="module" id="grammar1"><div class="mod-head"><div><div class="number">MISSION 05 / B1 Grammar</div><h2>How certain are you?</h2><p class="desc">Make deductions with must, might, could and can't.</p></div><span class="duration">10 min</span></div><div class="mod-body"><div class="three"><div class="tiled"><div class="kicker">Very likely</div><div style="font-size:29px;color:var(--mint);font-weight:850">must be</div><p>“She <b>must be</b> tired. She worked all night.”</p></div><div class="tiled"><div class="kicker">Possible</div><div style="font-size:29px;color:var(--blue);font-weight:850">might / could be</div><p>“He <b>might be</b> at home, but I'm not sure.”</p></div><div class="tiled"><div class="kicker">Not possible</div><div style="font-size:29px;color:var(--orange);font-weight:850">can't be</div><p>“That <b>can't be</b> Anna. She's abroad.”</p></div></div><p class="hint" style="margin-top:13px">Form: modal + base verb. Use <b>must be</b> for strong positive deductions, <b>can't be</b> for strong negative deductions. <b>Might be / could be</b> express possibility — they are not proof.</p><div class="labelrow">Make the best deduction</div><div id="grammar1ex"></div><button class="btn secondary" onclick="checkSelects('grammar1ex','grammar1Result')">Check grammar</button><div class="feedback" id="grammar1Result"></div><div class="speak"><strong>Speak:</strong> Think of a situation: “My friend isn't replying to her messages.” Give three possible explanations with <i>must, might</i> and <i>can't</i> where the evidence supports them.</div></div></div>
+
+<div class="module" id="case1"><div class="mod-head"><div><div class="number">MISSION 06 / Interactive investigation</div><h2>Case 014: The missing poster</h2><p class="desc">Can you solve a mystery without jumping to conclusions?</p></div><span class="duration">12 min</span></div><div class="mod-body"><div class="case-header"><div><div class="kicker">SCIENCE MUSEUM / CASE 014</div><h3 style="font-size:25px;margin:2px 0">The Vanishing Poster</h3><div class="hint">A rare exhibition poster disappeared during a busy evening.</div></div><span class="timestamp">CASE OPEN</span></div><div class="labelrow">Facts from the museum</div><div class="evidence"><div class="e-card"><em>18:30 / PHOTO</em><p>A visitor's photograph shows the poster on the wall.</p></div><div class="e-card"><em>18:45 / CAMERA</em><p>A security image shows the wall without the poster.</p></div><div class="e-card"><em>WITNESS A / MAYA</em><p>“I saw someone in a red coat near the gallery.”</p></div><div class="e-card"><em>WITNESS B / LEO</em><p>“I think it was a man with a red bag.”</p></div></div><div class="labelrow">Your detective questions</div><div class="two"><div class="topic-card"><strong>1. What might have happened?</strong><p>Make two different theories. Use <i>must / might / can't</i> where appropriate.</p></div><div class="topic-card"><strong>2. What do we really know?</strong><p>Which details are facts? Which details are memories or guesses?</p></div><div class="topic-card"><strong>3. Interview a witness</strong><p>Create two neutral questions and one leading question. Then explain the difference.</p></div><div class="topic-card"><strong>4. Make an early verdict</strong><p>Do you have enough evidence to accuse anyone? Why or why not?</p></div></div><p class="speak"><strong>Useful phrases:</strong> “According to the photograph…” · “One possible explanation is…” · “The witness could be mistaken.” · “We need to check…”</p><p class="note">The case continues in Lesson 2. Do not decide who did it yet.</p></div></div>
+<div class="module"><div class="mod-head"><div><div class="number">MISSION 07 / Exit ticket</div><h2>Change your mind?</h2></div><span class="duration">3 min</span></div><div class="mod-body"><div class="two"><div class="tiled"><p class="prompt">Finish the sentence:</p><p>“Before this lesson, I believed…, but now I think…”</p></div><div class="tiled"><p class="prompt">One question to take away:</p><p>“If our memory is imperfect, how can we know what really happened?”</p></div></div><div class="controls"><button class="btn" onclick="goLesson(2)">Open Lesson 2 →</button></div></div></div>
+</section>
+
+<section id="lesson2" class="section">
+<div class="hero"><div><div class="eyebrow">Case 014 continues · English B1</div><h1>THE<br><em>TRUTH</em><br>DETECTIVE.</h1><p class="intro">You have memories. You have witnesses. But do you have the truth? Follow the evidence, question the stories and solve the case.</p><div class="pills"><span class="pill">B1 English</span><span class="pill">Lesson 02 / 60 min</span><span class="pill">Media Literacy + Debate</span></div></div><div class="brain" aria-hidden="true"><svg viewBox="0 0 440 430"><g fill="none" stroke="#377f76" stroke-width="4"><circle cx="206" cy="187" r="113"/><circle cx="206" cy="187" r="73" stroke-dasharray="12 14" opacity=".6"/><path d="M287 264l90 95" stroke-width="23" stroke-linecap="round"/><path d="M287 264l90 95" stroke="#cce6de" stroke-width="12"/></g><g stroke="#7c9ed0" stroke-width="2" fill="none" opacity=".6"><path d="M140 164q60-72 128 11m-129 45q55 76 129-3"/><path d="M205 84v206m-101-103h205" stroke-dasharray="5 11"/></g><g fill="#e5a171"><circle cx="205" cy="187" r="13"/><circle cx="142" cy="164" r="6"/><circle cx="264" cy="219" r="6"/></g></svg></div></div>
+<div class="module" id="recap"><div class="mod-head"><div><div class="number">MISSION 08 / Reactivate</div><h2>Previously on The Memory Files…</h2><p class="desc">Quick recap of the case and the science.</p></div><span class="duration">6 min</span></div><div class="mod-body"><div class="three"><div class="topic-card"><strong>What is a false memory?</strong><p>Explain it without using the words <i>false</i> or <i>memory</i>.</p></div><div class="topic-card"><strong>What happened at the museum?</strong><p>Tell the story in four sentences.</p></div><div class="topic-card"><strong>Choose a theory.</strong><p>“The poster must be…” / “The witness might…”</p></div></div></div></div>
+
+<div class="module" id="social"><div class="mod-head"><div><div class="number">MISSION 09 / Fake news feed</div><h2>The internet has a theory.</h2><p class="desc">Three fictional posts have appeared. Which can you trust?</p></div><span class="duration">11 min</span></div><div class="mod-body"><p class="hint">All three posts below are invented for the lesson. They are examples, not real news.</p><div class="feed"><article class="post false"><div class="username">@museum_secrets · 30 minutes ago</div><h3>SHOCKING! A STUDENT STOLE THE HISTORIC POSTER!</h3><p>“Everybody knows who did it. Share this before they delete the story!”</p><div class="meta">No named source · No evidence linked · 2,400 reposts</div></article><article class="post blue"><div class="username">@eveningobserver · 1 hour ago</div><h3>Security camera photo proves a thief carried a red bag.</h3><p>The post shows a cropped image of a person carrying a bag. The date and place are not given.</p><div class="meta">Unclear image origin · No full video</div></article><article class="post"><div class="username">Museum visitor forum · Yesterday</div><h3>Someone says staff were repairing a display earlier that evening.</h3><p>“My cousin heard that a frame was damaged, but I don't know if it's true.”</p><div class="meta">Second-hand story · Not confirmed by the museum</div></article></div><div class="labelrow">Three questions for each post</div><div class="three"><div class="tiled"><b>WHO?</b><p>Who is the original source? Can we check their identity?</p></div><div class="tiled"><b>HOW?</b><p>What evidence is shown? What is missing?</p></div><div class="tiled"><b>WHY?</b><p>Does the post try to make us angry, afraid or excited?</p></div></div><p class="speak"><strong>Discuss:</strong> Which post is most convincing at first? Does any post prove what happened? Would you share any of them? Explain why.</p></div></div>
+
+<div class="module" id="reading2"><div class="mod-head"><div><div class="number">MISSION 10 / Reading</div><h2>When seeing isn't believing</h2><p class="desc">Deepfakes, misleading images, and how to verify stories.</p></div><span class="duration">10 min</span></div><div class="mod-body"><div class="read-card"><div class="kicker">DIGITAL LIFE / 02</div><div class="translation-hint"><span aria-hidden="true">✦</span> <span>Green words are interactive — hover to see the Russian translation, or tap on mobile.</span></div><div class="read"><p>Have you ever watched a video online and thought, “That can't be real”? Today, it can be difficult to know whether a video is real, edited or created by artificial intelligence.</p><p>A <button type="button" class="glossary-term" data-ru="дипфейк — поддельное видео или аудио, созданное с помощью ИИ" aria-label="Translate: deepfake" aria-expanded="false">deepfake</button> is a video, image or sound recording that uses technology to make something look or sound real when it isn't. For example, a video might show a famous person saying words they never said. Not every AI-generated video is harmful, but fake media can be used to trick people.</p><p>Sometimes, a picture is completely real but its <button type="button" class="glossary-term" data-ru="подпись (к фото, видео или публикации)" aria-label="Translate: caption" aria-expanded="false">caption</button> is misleading. An old photograph may be shared as if it were taken yesterday. A video can also be cut so we only see one part of an event. In these cases, the problem is not always the image itself, but the story around it.</p><p>How can we check information? First, <button type="button" class="glossary-term" data-ru="сделать паузу; остановиться" aria-label="Translate: pause" aria-expanded="false">pause</button> before sharing a surprising claim. Next, find out who originally published it. Is the source reliable? Then look for the same information in other trustworthy places. If you can, check the original photo or video and its date.</p><p>Remember: a confident voice, many likes and a realistic picture do not prove a story is true. It is better to say <button type="button" class="glossary-term" data-ru="«Я пока не знаю»" aria-label="Translate: “I don&#x27;t know yet”" aria-expanded="false">“I don&#x27;t know yet”</button> than to share something that might be false.</p></div><div class="tiny">Original B1-level adaptation based on European Commission and UNESCO educational resources.</div></div><div class="labelrow">Reading check</div><div class="quiz"><div class="q-title">1. Which example might NOT require AI to be misleading?</div><label><input name="d1" type="radio" value="a">An old real photo with a false date</label><label><input name="d1" type="radio" value="b">A synthetic voice pretending to be someone else</label><label><input name="d1" type="radio" value="c">An AI-created video</label></div><div class="quiz"><div class="q-title">2. Which action is recommended?</div><label><input name="d2" type="radio" value="a">Trust posts with lots of likes</label><label><input name="d2" type="radio" value="b">Check where a claim first came from</label><label><input name="d2" type="radio" value="c">Share first and check later</label></div><div class="quiz"><div class="q-title">3. Does a realistic picture prove an online story?</div><label><input name="d3" type="radio" value="a">Yes, always</label><label><input name="d3" type="radio" value="b">Only if a friend sent it</label><label><input name="d3" type="radio" value="c">No, we need to check the context</label></div><button class="btn secondary" onclick="checkRadio(['d1','d2','d3'],['a','b','c'],'reading2Result')">Check answers</button><div class="feedback" id="reading2Result"></div><div class="speak"><strong>Speak:</strong> What is more dangerous: a fake image, or a real image with a false story? Defend your opinion with two reasons.</div></div></div>
+
+<div class="module" id="grammar2"><div class="mod-head"><div><div class="number">MISSION 11 / B1 Grammar</div><h2>What did they actually say?</h2><p class="desc">Reported speech: statements and questions.</p></div><span class="duration">12 min</span></div><div class="mod-body"><div class="two"><div class="tiled"><div class="kicker">DIRECT → REPORTED</div><p class="quote">“I saw someone in red.”</p><p>Maya said (that) she <b>had seen</b> someone in red.</p><p class="quote">“The poster is missing.”</p><p>He said (that) the poster <b>was</b> missing.</p></div><div class="tiled"><div class="kicker">SAY / TELL / ASK</div><p><b>said (that)</b> + sentence</p><p><b>told me (that)</b> + sentence</p><p><b>asked if / whether</b> + statement word order</p><p class="hint">“Did you see a bag?” → She asked if I had seen a bag.</p></div></div><div class="labelrow">Useful changes</div><div class="three"><div class="tiled">am/is → <b>was</b><br>are → <b>were</b><br>can → <b>could</b></div><div class="tiled">will → <b>would</b><br>have/has seen → <b>had seen</b><br>see/saw → <b>saw/had seen</b></div><div class="tiled">today → <b>that day</b><br>yesterday → <b>the day before</b><br>tomorrow → <b>the next day</b></div></div><p class="hint">We usually shift tenses when reporting something later in the past. If a fact is still true or we report it immediately, a shift may not be necessary.</p><div class="labelrow">Report the witness statements</div><div id="reported"></div><button class="btn secondary" onclick="checkSelects('reported','reportedResult')">Check answers</button><div class="feedback" id="reportedResult"></div><div class="speak"><strong>Speaking game:</strong> The teacher gives a new statement. Report it immediately: “The witness said that...” Then swap roles.</div></div></div>
+
+<div class="module" id="case2"><div class="mod-head"><div><div class="number">MISSION 12 / Case resolution</div><h2>The final piece of evidence</h2><p class="desc">Make a verdict first. Then open the official record.</p></div><span class="duration">10 min</span></div><div class="mod-body"><div class="case-header"><div><div class="kicker">CASE 014 / FINAL REVIEW</div><h3 style="margin:3px 0;font-size:24px">Who took the poster?</h3><p style="margin:0">List the facts you know and the information you cannot verify.</p></div><span class="timestamp">AWAITING VERDICT</span></div><div class="two" style="margin-top:16px"><div class="tiled"><div class="kicker">Build a careful statement</div><p>“We know that...”</p><p>“We don't know whether...”</p><p>“One witness said that...”</p><p>“The most reliable evidence is...”</p></div><div class="tiled"><div class="kicker">Choose your conclusion</div><label style="display:block;margin:10px 0"><input type="radio" name="verdict" value="theft"> The poster was definitely stolen.</label><label style="display:block;margin:10px 0"><input type="radio" name="verdict" value="staff"> Staff definitely moved it.</label><label style="display:block;margin:10px 0"><input type="radio" name="verdict" value="unknown"> There is not enough evidence yet.</label></div></div><div class="controls"><button class="btn danger" onclick="revealCase()">Open the museum log</button></div><div class="feedback" id="caseResult"><div class="kicker">OFFICIAL MAINTENANCE LOG / 18:42</div><p style="font-size:19px;margin:7px 0">“The wooden frame became unstable. I removed the poster and moved it to the storage room for safety.” — Museum curator</p><p>The poster was not stolen. The red coat and red bag did not establish who moved it. The true explanation appeared only when a new piece of evidence was checked.</p><p><b>Detective lesson:</b> An honest answer is sometimes, “We don't know yet.”</p></div><div class="speak"><strong>Reflect:</strong> Did you suspect somebody? What made you think so? Which details were truly relevant? How would you ask a witness questions without influencing their memory?</div></div></div>
+
+<div class="module" id="debate"><div class="mod-head"><div><div class="number">MISSION 13 / Final debate</div><h2>Can we still trust what we see?</h2><p class="desc">Make a case. Challenge an argument. Respond politely.</p></div><span class="duration">9 min</span></div><div class="mod-body"><div class="three"><div class="topic-card"><strong>Statement A</strong><p>“Video evidence is always more reliable than human memory.”</p></div><div class="topic-card"><strong>Statement B</strong><p>“Social media companies should label all AI-generated videos.”</p></div><div class="topic-card"><strong>Statement C</strong><p>“It's better to be doubtful than to believe everything.”</p></div></div><div class="labelrow">The language of a good debate</div><div class="two"><div class="tiled"><p>“I see your point, but…”</p><p>“I partly agree because…”</p><p>“The problem with that idea is…”</p></div><div class="tiled"><p>“We shouldn't assume that…”</p><p>“What evidence supports that?”</p><p>“It depends on the situation.”</p></div></div><p class="hint">Choose a statement. Speak for 45–60 seconds. The other person must challenge one point. Swap sides and try arguing the opposite view.</p></div></div>
+<div class="module" id="close"><div class="mod-head"><div><div class="number">MISSION 14 / Final reflection</div><h2>What will you remember?</h2></div><span class="duration">2 min</span></div><div class="mod-body"><p class="final-heading">DON'T TRUST EVERYTHING.<br><span style="color:var(--mint)">CHECK THE EVIDENCE.</span></p><div class="two"><div class="topic-card"><strong>3 steps</strong><p>Who said it? / What evidence exists? / Can another reliable source confirm it?</p></div><div class="topic-card"><strong>1-sentence takeaway</strong><p>“The most surprising thing I learned was…”</p></div></div></div></div>
+</section>
+
+<section id="extras" style="padding:4px 0 25px"><div class="module" style="background:linear-gradient(145deg,#fffaf6,#f7faf9)"><div class="mod-head"><div><div class="number">BONUS / If you have extra time</div><h2>Extra missions + homework</h2><p class="desc">15–30 additional minutes of practice, adaptable to either lesson.</p></div><span class="duration">Optional</span></div><div class="mod-body"><div class="three"><div class="topic-card"><strong>🎬 The selective attention test / 6 min</strong><p>Watch a classic research video. Count the passes made by players wearing white. Discuss what you noticed.</p><a href="https://www.youtube.com/watch?v=vJG698U2Mvo" target="_blank" rel="noopener">Open the original video ↗</a><p class="tiny">Attention is not identical to memory, but both affect what we can report about an event.</p></div><div class="topic-card"><strong>🎤 A second interview / 8 min</strong><p>Student = reporter; teacher = witness. Ask five neutral questions. Then change three into leading questions and compare.</p></div><div class="topic-card"><strong>⚖️ An ethical choice / 8 min</strong><p>If a technology could remove one embarrassing memory, should people be allowed to use it? Give two pros and two cons.</p></div></div><div class="divider"></div><div class="kicker">HOMEWORK / 15–20 min</div><div class="two"><div class="tiled"><h3>Writing: A memory that changed</h3><p>Write <b>120–150 words</b> about a time when you and another person remembered the same event differently. Describe both versions and say what evidence could help.</p><p class="hint">Use: <i>At first I thought… / She said that… / I might have… / Later we discovered…</i></p></div><div class="tiled"><h3>Critical thinking: Fact-check a claim</h3><p>Find a harmless surprising claim online. Write its source, what evidence is offered, what another trustworthy source says, and your conclusion (80–100 words).</p><p class="hint">If you cannot verify the claim, write <i>unverified</i> — do not call it false without evidence.</p></div></div></div></div></section>
+</main>
+<footer class="shell footer"><div><b>THE MEMORY FILES</b><br>Original B1 learning experience<br>Made by Stas Vinnikov</div><div class="source-links"><b>Research & learning sources</b><br><a href="https://www.apa.org/research/action/speaking-of-psychology/memory-manipulated" target="_blank">American Psychological Association</a><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5407674/" target="_blank">DRM memory experiments</a><a href="https://commission.europa.eu/digital-life/finding-information-you-can-trust_en" target="_blank">European Commission</a><a href="https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/reported-speech-statements" target="_blank">British Council grammar</a></div></footer>
+<div id="translationTip" class="translation-tip" role="tooltip" hidden></div>
+<script>
+/* Original UI sound palette: soft keys, glass-like confirmations, and case-reveal chime.
+   No voices, recordings, third-party audio or network requests. Audio starts only after
+   a genuine user gesture (the browser's autoplay restrictions are respected). */
+const SoundFX = (() => {
+  const preferenceKey='memory-files-b1-sound-v1';
+  let enabled=true;
+  try { enabled=localStorage.getItem(preferenceKey)!=='off'; } catch(e) { /* file:// sandbox may block storage */ }
+  let ctx=null, bus=null, noise=null, lastHover=0;
+  const maxVolume=0.65;
+  const toggle=document.getElementById('soundToggle');
+
+  function updateToggle(){
+    toggle.setAttribute('aria-pressed',String(enabled));
+    toggle.setAttribute('aria-label',enabled?'Mute sound effects':'Enable sound effects');
+    toggle.title=enabled?'Sound effects are on · Click to mute':'Sound effects are off · Click to enable';
+    toggle.querySelector('.sound-label').textContent=enabled?'Sound on':'Sound off';
+  }
+  updateToggle();
+
+  function audio(){
+    if(!enabled)return null;
+    if(!ctx){
+      const NativeAudio=window.AudioContext||window.webkitAudioContext;
+      if(!NativeAudio)return null;
+      try {
+        ctx=new NativeAudio();
+        bus=ctx.createGain();
+        bus.gain.value=maxVolume;
+        bus.connect(ctx.destination);
+      }catch(e){ctx=null;return null}
+    }
+    if(ctx.state==='suspended') ctx.resume().catch(()=>{});
+    return ctx;
+  }
+
+  function note(frequency,when,duration,level,shape='sine',endFrequency=null){
+    const a=ctx.createOscillator(), g=ctx.createGain();
+    a.type=shape;
+    a.frequency.setValueAtTime(frequency,when);
+    if(endFrequency)a.frequency.exponentialRampToValueAtTime(endFrequency,when+duration);
+    g.gain.setValueAtTime(0.0001,when);
+    g.gain.exponentialRampToValueAtTime(Math.max(0.00015,level),when+0.009);
+    g.gain.exponentialRampToValueAtTime(0.0001,when+duration);
+    a.connect(g);g.connect(bus);a.start(when);a.stop(when+duration+0.006);
+  }
+  function breath(when,duration,level,filterHz=850){
+    // Low-level filtered noise avoids harsh digital clicks.
+    if(!noise){
+      noise=ctx.createBuffer(1,Math.round(ctx.sampleRate*.3),ctx.sampleRate);
+      const channel=noise.getChannelData(0);
+      for(let i=0;i<channel.length;i++)channel[i]=(Math.random()*2-1)*.55;
+    }
+    const src=ctx.createBufferSource(), filter=ctx.createBiquadFilter(), g=ctx.createGain();
+    src.buffer=noise;filter.type='bandpass';filter.frequency.value=filterHz;filter.Q.value=.85;
+    g.gain.setValueAtTime(.0001,when);
+    g.gain.linearRampToValueAtTime(level,when+.008);
+    g.gain.exponentialRampToValueAtTime(.0001,when+duration);
+    src.connect(filter);filter.connect(g);g.connect(bus);src.start(when);src.stop(when+duration+.01);
+  }
+  function play(kind='tap'){
+    const c=audio(); if(!c)return;
+    const t=c.currentTime+.009;
+    try {
+      switch(kind){
+        case 'hover': {
+          if(performance.now()-lastHover<145)return;
+          lastHover=performance.now();
+          note(735,t,.032,.010,'sine',690);break;
+        }
+        case 'tap':
+          breath(t,.032,.019,1450);note(500,t,.060,.025,'sine',410);break;
+        case 'select':
+          note(565,t,.080,.035,'sine',660);breath(t,.028,.009,1800);break;
+        case 'word':
+          note(775,t,.100,.019,'sine',680);break;
+        case 'switch':
+          note(450,t,.090,.036,'sine');note(625,t+.065,.15,.040,'sine');break;
+        case 'start':
+          note(392,t,.10,.041,'sine');note(494,t+.07,.11,.043,'sine');note(587,t+.14,.16,.040,'sine');break;
+        case 'tick':
+          note(620,t,.052,.022,'sine');break;
+        case 'timeout':
+          note(590,t,.16,.045,'sine');note(440,t+.15,.19,.039,'sine');break;
+        case 'success':
+          note(523,t,.14,.045,'sine');note(659,t+.088,.17,.049,'sine');
+          note(784,t+.185,.25,.041,'sine');note(1176,t+.185,.2,.013,'sine');break;
+        case 'retry':
+          note(493,t,.14,.034,'sine');note(391,t+.1,.18,.029,'sine');break;
+        case 'reveal':
+          breath(t,.33,.019,1500);
+          note(349,t,.37,.039,'sine',392);
+          note(523,t+.11,.36,.050,'sine');note(659,t+.24,.39,.052,'sine');
+          note(880,t+.38,.46,.040,'sine');break;
+        case 'enabled':
+          note(560,t,.12,.039,'sine');note(750,t+.09,.22,.038,'sine');break;
+        case 'disabled':
+          note(540,t,.10,.024,'sine',360);break;
+      }
+    }catch(e){/* Never interrupt an exercise due to an audio problem. */}
+  }
+  function setEnabled(value){
+    if(!value&&enabled)play('disabled');
+    enabled=!!value;
+    try {localStorage.setItem(preferenceKey,enabled?'on':'off')} catch(e){}
+    updateToggle();
+    if(enabled)play('enabled');
+  }
+  toggle.addEventListener('click',()=>setEnabled(!enabled));
+  // Keep the site quiet on loading; no automatic sound or robotic voice.
+  document.addEventListener('click',e=>{
+    const el=e.target.closest?.('button');
+    if(!el||el===toggle||el.disabled)return;
+    if(el.classList.contains('glossary-term'))play('word');
+    else if(el.id==='t1'||el.id==='t2')play('switch');
+    else if(el.dataset.word)play('select');
+    else if(el.getAttribute('onclick')?.includes('startMemory'))play('start');
+    else if(el.getAttribute('onclick')?.includes('finishMemory')){/* dedicated result sound */}
+    else if(el.getAttribute('onclick')?.includes('checkRadio')){/* dedicated result sound */}
+    else if(el.getAttribute('onclick')?.includes('checkSelects')){/* dedicated result sound */}
+    else if(el.getAttribute('onclick')?.includes('revealCase')){/* dedicated reveal sound */}
+    else play('tap');
+  });
+  document.addEventListener('pointerover',e=>{
+    if(e.pointerType==='touch'||!ctx||ctx.state!=='running')return;
+    const b=e.target.closest?.('.btn,.switch button');
+    if(b&&!b.contains(e.relatedTarget))play('hover');
+  });
+  document.addEventListener('change',e=>{
+    if(e.target.matches?.('select,input[type="radio"],input[type="range"]'))play('select');
+  });
+  return {play,setEnabled,isEnabled:()=>enabled};
+})();
+
+function goLesson(n){document.getElementById('lesson1').classList.toggle('active',n===1);document.getElementById('lesson2').classList.toggle('active',n===2);document.getElementById('t1').classList.toggle('active',n===1);document.getElementById('t2').classList.toggle('active',n===2);window.scrollTo({top:0,behavior:'smooth'});updateProgress();}
+function updateProgress(){const active=document.querySelector('.section.active');let top=window.scrollY,full=Math.max(1,active.offsetHeight-window.innerHeight+100),pct=Math.max(0,Math.min(100,top/full*100));document.getElementById('progress').style.width=pct+'%'}window.addEventListener('scroll',updateProgress,{passive:true});
+const words=['bed','rest','awake','tired','dream','pillow','blanket','night','nap','yawn','doze','snooze'];
+const choices=['bed','sleep','nap','table','pillow','night','rest','chair','dream','blanket','warm','snooze'];let memoryTimer=null;let selected=new Set();
+function startMemory(){clearInterval(memoryTimer);document.getElementById('memoryRecall').style.display='none';selected.clear();let s=25;const box=document.getElementById('memoryBox');box.innerHTML=`<div class="countdown" id="countdown">00:${String(s).padStart(2,'0')}</div><div class="test-grid">${words.map(w=>`<div class="memory-token">${w}</div>`).join('')}</div><p class="tiny">Look carefully. The words will disappear automatically.</p>`;memoryTimer=setInterval(()=>{s--;const n=document.getElementById('countdown');if(n)n.textContent='00:'+String(s).padStart(2,'0');if(s>0&&s<=5)SoundFX.play('tick');if(s<=0){SoundFX.play('timeout');clearInterval(memoryTimer);box.innerHTML='<p style="font-size:23px;font-weight:700;color:var(--mint)">Time is up! What can you remember?</p>';document.getElementById('memoryRecall').style.display='block';document.getElementById('memoryChoices').innerHTML=choices.map(w=>`<button type="button" class="option" data-word="${w}" onclick="toggleChoice(this)">${w}</button>`).join('');document.getElementById('memoryResult').className='feedback';}} ,1000)}
+function toggleChoice(el){const w=el.dataset.word;if(selected.has(w)){selected.delete(w);el.classList.remove('selected')}else{selected.add(w);el.classList.add('selected')}}
+function finishMemory(){const lure=selected.has('sleep')||(/\bsleep\b/i.test(document.getElementById('recallText').value));const correct=[...selected].filter(w=>words.includes(w));const result=document.getElementById('memoryResult');SoundFX.play('reveal');result.className='feedback show';result.innerHTML=`<b>${lure?'Interesting! You remembered “sleep”.':'Nice work — you did not choose “sleep”.'}</b><p>The word <b>sleep</b> was <b>not</b> in the list, but many of the words were connected to it. This is a classroom demonstration of a possible false-memory effect, not a test of intelligence.</p><p>From the recognition cards, you selected <b>${correct.length}</b> words that actually appeared. The original list was: <b>${words.join(', ')}</b>.</p><p>Now explain: Why was “sleep” such a tempting choice?</p>`}
+function resetMemory(){clearInterval(memoryTimer);selected.clear();document.getElementById('memoryRecall').style.display='none';document.getElementById('memoryBox').innerHTML='<p style="margin:0 0 14px;color:#607782">Ready for another try?</p><button class="btn" onclick="startMemory()">Restart memory test</button>';document.getElementById('recallText').value=''}
+function checkRadio(names,answers,id){let correct=0,done=0;names.forEach((n,i)=>{const s=document.querySelector(`input[name="${n}"]:checked`);if(s){done++;if(s.value===answers[i])correct++}});const box=document.getElementById(id);SoundFX.play(correct===answers.length?'success':'retry');box.className='feedback show '+(correct===answers.length?'good':'warn');box.innerHTML=`${correct}/${answers.length} correct. ${done<names.length?'Choose an answer for every question. ':''}${correct===answers.length?'Excellent — explain why each answer is correct.':'Re-read the article and try again.'}`}
+function buildSelects(id,questions,options){document.getElementById(id).innerHTML=questions.map((q,i)=>`<div class="exercise-line"><span><b>${i+1}.</b> ${q.text}</span><select aria-label="Answer ${i+1}" data-answer="${q.answer}"><option value="">Choose…</option>${(q.options||options).map(o=>`<option value="${o}">${o}</option>`).join('')}</select></div>`).join('')}
+function checkSelects(id,result){const sels=[...document.querySelectorAll('#'+id+' select')];let n=0;sels.forEach(el=>{let ok=el.dataset.answer.split("|").includes(el.value);if(ok)n++;el.style.borderColor=el.value?(ok?'#87e6b5':'#f3ab91'):'#60758a'});const b=document.getElementById(result);SoundFX.play(n===sels.length?'success':'retry');b.className='feedback show '+(n===sels.length?'good':'warn');b.innerHTML=`<b>${n} / ${sels.length} correct.</b> ${n===sels.length?'Great work. Now use the new language in your own sentences.':'Check the clues and try the incorrect ones again.'}`}
+buildSelects('vocab1',[
+{text:'A person who saw an event is a…',answer:'witness'},
+{text:'Facts that help us decide what happened are…',answer:'evidence'},
+{text:'I cannot ___ the colour of the car.',answer:'recall'},
+{text:'This headline is ___ because it leaves out an important fact.',answer:'misleading'},
+{text:'I sometimes ___ two people’s names.',answer:'mix up'},
+{text:'She is very ___, but she might be wrong.',answer:'confident'},
+{text:'I ___ asking a neutral question first.',answer:'suggest'},
+{text:'Is this information from a ___ source?',answer:'reliable'}],['witness','evidence','recall','misleading','mix up','confident','suggest','reliable']);
+buildSelects('grammar1ex',[
+{text:'The lights are on and I can hear music. They ___ at home. (strong deduction)',answer:'must be'},
+{text:'I don’t recognise the face. It ___ a visitor, but I’m unsure.',answer:'might be|could be'},
+{text:'Maya was in another city at 6 p.m. The person in the photo ___ Maya.',answer:"can't be"},
+{text:'The bag looks red in this photo, but the light is poor. It ___ orange.',answer:'could be|might be'},
+{text:'The museum is closed and every door is locked. It ___ open to the public now.',answer:"can't be"},
+{text:'She has the official curator badge and the museum keys. She ___ a member of staff. (strong deduction)',answer:'must be'}],['must be','might be','could be',"can't be"]);
+buildSelects('reported',[
+{text:'Maya: “I am near the museum.” → Maya said she ___ near the museum.',answer:'was'},
+{text:'Leo: “I saw a red bag.” → Leo said he ___ a red bag.',answer:'had seen'},
+{text:'Anna: “I can help.” → Anna said she ___ help.',answer:'could'},
+{text:'Guide: “The museum is closed.” → The guide said the museum ___ closed.',answer:'was'},
+{text:'Maya: “I will call tomorrow.” → Maya said she ___ call the next day.',answer:'would'},
+{text:'Reporter: “Did you see the poster?” → The reporter asked if I ___ the poster.',answer:'had seen'},
+{text:'Curator: “We are checking the cameras.” → The curator said they ___ checking the cameras.',answer:'were'}],['was','were','had seen','could','would','saw','are','will']);
+function revealCase(){const v=document.querySelector('input[name="verdict"]:checked');const result=document.getElementById('caseResult');SoundFX.play('reveal');result.className='feedback show good';result.scrollIntoView({behavior:'smooth',block:'nearest'});if(v&&v.value==='unknown'){result.querySelector('.verdict-feedback')?.remove(); result.insertAdjacentHTML('afterbegin','<p class="verdict-feedback"><b>Your careful verdict was justified by the evidence available before the log.</b></p>')}}
+
+// The same tooltip serves every highlighted term. Mouse, keyboard and touchscreen supported.
+(() => {
+  const bubble=document.getElementById('translationTip');
+  let active=null;
+  let pinned=null;
+  function show(term){
+    if(active && active!==term){active.classList.remove('glossary-active');active.setAttribute('aria-expanded','false')}
+    active=term;
+    bubble.textContent=term.dataset.ru;
+    bubble.hidden=false;
+    term.classList.add('glossary-active');
+    term.setAttribute('aria-expanded','true');
+    position(term);
+  }
+  function position(term){
+    if(bubble.hidden)return;
+    const r=term.getBoundingClientRect();
+    const size=bubble.getBoundingClientRect();
+    const pad=12;
+    const x=Math.min(window.innerWidth-size.width-pad,Math.max(pad,r.left+r.width/2-size.width/2));
+    const above=r.top-size.height-11;
+    const y=above>=pad?above:Math.min(window.innerHeight-size.height-pad,r.bottom+11);
+    bubble.style.left=`${Math.max(pad,x)}px`;
+    bubble.style.top=`${Math.max(pad,y)}px`;
+  }
+  function hide(){
+    if(active){active.classList.remove('glossary-active');active.setAttribute('aria-expanded','false')}
+    active=null;
+    bubble.hidden=true;
+  }
+  document.addEventListener('pointerover',e=>{
+    const term=e.target.closest?.('.glossary-term');
+    if(term && e.pointerType!=='touch' && !pinned)show(term);
+  });
+  document.addEventListener('pointerout',e=>{
+    const term=e.target.closest?.('.glossary-term');
+    if(term && e.pointerType!=='touch' && !pinned && !term.contains(e.relatedTarget))hide();
+  });
+  document.addEventListener('click',e=>{
+    const term=e.target.closest?.('.glossary-term');
+    if(term){
+      if(pinned===term){pinned=null;hide()}
+      else{pinned=term;show(term)}
+    }else if(pinned){pinned=null;hide()}
+  });
+  document.addEventListener('focusin',e=>{
+    if(e.target.matches?.('.glossary-term') && !pinned)show(e.target);
+  });
+  document.addEventListener('focusout',e=>{
+    if(e.target===active && !pinned)hide();
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){pinned=null;hide()}
+  });
+  window.addEventListener('scroll',()=>{if(active)position(active)},{passive:true});
+  window.addEventListener('resize',()=>{if(active)position(active)});
+})();
+</script>
+</body></html>
